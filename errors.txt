@@ -1,0 +1,14 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 40: show statement expects a non-empty block.
+    show bg rocketstart:
+                        ^
+
+File "game/script.rpy", line 41: expected statement.
+    zoom 1.5
+          ^
+
+Ren'Py Version: Ren'Py 8.3.7.25031702
+Sun Jun 22 00:52:48 2025
