@@ -12,6 +12,8 @@ define l = Character("Лео")
 image janna = "images/Characters/janna.png"
 image leo = "images/Characters/leo.png"
 
+
+define n = Character(None, kind=nvl)
 # The game starts here.
 
 label start:
@@ -22,6 +24,7 @@ label start:
 
     scene
     show bg dictor
+    play music "Music/wide-flower-fields-atmospheric-ambient-332274.mp3" loop volume 0.1
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
@@ -35,20 +38,29 @@ label start:
     d "Впервые в истории человечества они пересекут такое расстояние в глубоком космосе."
     d "Их миссия — найти новый дом. Для нас. Для наших детей."
     d "Давайте же возрадуемся новой главе человеческой истории."
-
-    scene bg rocketstart
+    stop music fadeout 1
+    scene bg rocketstart with fade
     d "Вот-вот и запуск ракеты стартует!"
+
+    play sound "Sounds/rocketlaunch.mp3"
+
     d "3..."
     d "2..."
     d "1..."
     "......"
     
-    play sound "Sounds/rocketlaunch.mp3"
     
-    scene bg mainroomcrew
-
-    show leo
-    show janna
+    
+    scene bg mainroomcrew with fade
+    play music "Music/space-ambient-351305.mp3" loop volume 0.1
+    show leo with dissolve:
+        ypos 300
+        xalign 0.7
+        zoom 1.5
+    show janna with dissolve:
+        xalign 0.3
+        ypos 300
+        zoom 1.5
     j "Добро пожаловать на борт. Меня зовут Жанна Адельман. С этого момента — я ваш капитан.
 Лео — мой заместитель. Он отвечает за навигацию и безопасность."
     l "Рад знакомству. Мы здесь не ради личных рекордов. Только как команда мы сможем выжить — и выполнить миссию."
@@ -65,14 +77,18 @@ label start:
             $ protocols_read = True
             
             "Вы открываете интерфейс и внимательно изучаете каждый пункт."
-            """ 
-            Дыры заделывай.
-            Мусор выкидывай.
-            Окна не открывай.
-            Пиво не пей.
-            Не падай.
 
-            """
+            nvl clear 
+            window hide
+
+            n "
+            Дыры заделывай.{p}
+            Мусор выкидывай.{p}
+            Окна не открывай.{p}
+            Пиво не пей.{p}"
+            n "
+            Не падай.{p}"
+            
 
         "Нет, потом как-нибудь":
             $ protocols_read = False
